@@ -20,14 +20,21 @@ pipeline {
 
 	     }
 
-            stage ('Deployment Stage'){
+            stage ('Packaging Stage'){
                 steps {
 	           withMaven(maven : 'maven'){
-	               sh 'mvn install'
+	               sh 'mvn package'
 	           }
                 }
             }
 
+	     stage('Deploy to Tomcat'){
+                  steps {
+                      sshagent(['tomcatuserremote']) {
+    				sh 'scp -o StrictHostKeyChecking=no target/*.war ec2-user@13.232.219.127:/opt/apache-tomcat-8.5.55/webapps/ '
+                       }
+                  }
+              }
 
 	 }
 }
