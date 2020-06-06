@@ -15,6 +15,22 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+
+
+<distributionManagement>
+    <repository>
+        <id>central</id>
+        <name>ip-172-31-13-48.ap-south-1.compute.internal-releases</name>
+        <url>http://13.233.154.74:8081/artifactory/Omv</url>
+    </repository>
+    <snapshotRepository>
+        <id>snapshots</id>
+        <name>ip-172-31-13-48.ap-south-1.compute.internal-snapshots</name>
+        <url>http://13.233.154.74:8081/artifactory/Omv</url>
+    </snapshotRepository>
+</distributionManagement>
+
+
   <build>
     <finalName>java-web-project</finalName>
   </build>
